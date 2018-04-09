@@ -1,0 +1,212 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.4.15
+-- Dumped by pg_dump version 9.4.15
+-- Started on 2018-04-09 22:27:50
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 1 (class 3079 OID 11855)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2003 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 174 (class 1259 OID 25235)
+-- Name: verb; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE verb (
+    id bigint NOT NULL,
+    image character varying(255),
+    infinitive character varying(255),
+    participate character varying(255),
+    simple character varying(255),
+    translate character varying(255)
+);
+
+
+ALTER TABLE verb OWNER TO postgres;
+
+--
+-- TOC entry 173 (class 1259 OID 25233)
+-- Name: verb_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE verb_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE verb_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2004 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: verb_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE verb_id_seq OWNED BY verb.id;
+
+
+--
+-- TOC entry 1882 (class 2604 OID 25238)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY verb ALTER COLUMN id SET DEFAULT nextval('verb_id_seq'::regclass);
+
+
+--
+-- TOC entry 1995 (class 0 OID 25235)
+-- Dependencies: 174
+-- Data for Name: verb; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY verb (id, image, infinitive, participate, simple, translate) FROM stdin;
+18	drive.jpg	drive	driven	drove	водити
+37	leave.jpg	leave	left	left	покидати
+1	beat.jpg	beat	beaten	beat	бити
+3	begin.jpg	begin	begun	began	починати
+4	bite.jpg	bite	bitten	bit	кусати
+5	blow.jpg	blow	blown	blew	дути
+6	break.jpg	break	broken	broke	ламати
+7	bring.jpg	bring	brought	brought	перенести
+8	build.jpg	build	built	built	будувати
+9	buy.jpg	buy	bought	bought	купляти
+10	catch.jpg	catch	caught	caught	ловити
+11	choose.jpg	choose	chosen	chose	вибирати
+12	come.jpg	come	come	came	прийти
+13	cost.jpg	cost	cost	cost	коштувати
+14	cut.jpg	cut	cut	cut	різати
+15	do.jpg	do	done	did	робити
+16	draw.jpg	draw	drawn	drew	малювати
+17	drink.jpg	drink	drunk	drank	пити
+19	eat.jpg	eat	eaten	ate	їсти
+20	fall.jpg	fall	fallen	fell	впасти
+21	feel.jpg	feel	felt	felt	відчувати
+22	fight.jpg	fight	fought	fought	битися
+23	find.jpg	find	found	found	знаходити
+24	fly.jpg	fly	flown	flew	літати
+25	forget.jpg	forget	forgoten	forgot	забувати
+26	get.jpg	get	got	got	отримати
+27	grow.jpg	grow	grown	grew	рости
+28	hang.jpg	hang	hung	hung	висіти
+29	have.jpg	have	had	had	мати
+30	hear.jpg	hear	heard	heard	чути
+31	hide.jpg	hide	hidden	hid	ховати
+32	hit.jpg	hit	hit	hit	попадати
+33	hold.jpg	hold	held	held	тримати
+34	hurt.jpg	hurt	hurt	hurt	ранити
+35	keep.jpg	keep	kept	kept	підримувати
+36	know.jpg	know	known	knew	знати
+38	lend.png	lend	lent	lent	позичити
+39	let.jpg	let	let	let	дозволити
+40	lie.jpg	lie	lain	lay	лежати
+41	light.jpg	light	lit	lit	освічувати
+42	lose.jpg	lose	lost	lost	губити
+43	make.jpg	make	made	made	робити
+44	mean.png	mean	meant	meant	означати
+45	meet.jpg	meet	met	met	зустрічати
+46	pay.jpg	pay	paid	paid	платити
+47	put.jpg	put	put	put	класти
+54	read.jpg	read	read	read	читати
+55	ride.jpg	ride	ridden	rode	їздити верхи
+56	ring.jpg	ring	rung	rang	дзвонити
+57	ladder.jpg	rise	risen	rose	підніматись
+58	run.jpg	run	run	ran	бігати
+59	say.jpg	say	said	said	казати
+60	see.jpg	see	seen	saw	бачити
+61	sell.jpg	sell	sold	sold	продавати
+62	send.jpg	send	sent	sent	відправляти
+63	shine.jpg	shine	shone	shone	світити
+64	shoot.jpg	shoot	shot	shot	стріляти
+65	paintings.jpg	show	shown	showed	показувати
+66	shut.jpg	shut	shut	shut	закривати
+67	sing.jpg	sing	sung	sang	співати
+68	sit.jpg	sit	sat	sat	сидіти
+69	sleep.jpg	sleep	slept	slept	спати
+70	speak.jpg	speak	spoken	spoke	говорити
+72	stand.jpg	stand	stood	stood	стояти
+73	steal.jpg	steal	stolen	stole	красти
+74	swim.jpg	swim	swum	swam	плавати
+76	teach.jpg	teach	taught	taught	вчити
+85	write.jpg	write	written	wrote	писати
+84	win.jpg	win	won	won	вигравати
+83	wear.jpg	wear	worn	wore	одягати
+82	wake.png	wake	woken	woke	будити
+77	tear.jpg	tear	torn	tore	рвати
+78	tell.jpg	tell	told	told	розказати
+79	think.png	think	thought	thought	думати
+80	throw.jpg	throw	thrown	threw	кидати
+81	understand.jpg	understand	understood	understood	розуміти
+71	spend.jpg	spend	spent	spent	проводити
+2	become.jpg	become	become	became	стати
+75	take.jpg	take	taken	took	брати
+\.
+
+
+--
+-- TOC entry 2005 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: verb_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('verb_id_seq', 85, true);
+
+
+--
+-- TOC entry 1884 (class 2606 OID 25243)
+-- Name: verb_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY verb
+    ADD CONSTRAINT verb_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2002 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2018-04-09 22:27:50
+
+--
+-- PostgreSQL database dump complete
+--
+
