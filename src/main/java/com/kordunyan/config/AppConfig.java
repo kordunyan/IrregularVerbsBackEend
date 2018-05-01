@@ -9,8 +9,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class AppConfig implements WebMvcConfigurer {
 
-	private static final String PROP_EXTERNAL_IMAGES = "external.images";
-
 	private final Environment env;
 
 	@Autowired
@@ -22,6 +20,6 @@ public class AppConfig implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry
 				.addResourceHandler("/images/**")
-				.addResourceLocations(String.format("file:///%s", env.getRequiredProperty(PROP_EXTERNAL_IMAGES)));
+				.addResourceLocations(String.format("file:///%s", env.getRequiredProperty(AppProperties.PROP_EXTERNAL_IMAGES)));
 	}
 }

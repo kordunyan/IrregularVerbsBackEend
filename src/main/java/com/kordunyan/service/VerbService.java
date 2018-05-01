@@ -2,6 +2,7 @@ package com.kordunyan.service;
 
 import com.kordunyan.domain.Verb;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface VerbService {
@@ -9,5 +10,7 @@ public interface VerbService {
 
 	List<Verb> getAllOrderedVerbs();
 
-	Verb saveVerb(Verb verb);
+	Verb saveVerb(Verb verb) throws IOException;
+
+	void deleteById(Long id);
 }
